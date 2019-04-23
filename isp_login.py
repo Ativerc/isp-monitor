@@ -1,7 +1,7 @@
 import requests
-from bs4 import BeautifulSoup as bs
 from ignore.credentials import credentials_dict
 from ignore.defaults import headers
+from isp_parser import parser
 
 
 
@@ -25,5 +25,4 @@ headers = headers
 
 response = s.post(login_url, cookies=cookiejar, data=data, headers= headers, verify=False)
 
-
-print(response.content)
+print(parser(response))
