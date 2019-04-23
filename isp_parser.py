@@ -26,8 +26,10 @@ def formatter(table_data):
       counter +=1
 
     non_empty_data_list = list(map(str.strip, data_list))
-    # :TODO: function to convert the list to dict
+    non_empty_data_list.append("") #:TODO:Just because there's an empty "" at the end. Will get back to this later. 
 
     data_dict = {}
-    
-    return non_empty_data_list
+    for i in range(0, len(non_empty_data_list), 2):
+      data_dict[non_empty_data_list[i]] = non_empty_data_list[i+1]
+
+    return data_dict

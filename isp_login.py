@@ -2,7 +2,7 @@ import requests
 from ignore.credentials import credentials_dict
 from ignore.defaults import headers
 from isp_parser import parser
-
+from isp_printer import print_this
 
 
 s = requests.session()
@@ -25,4 +25,6 @@ headers = headers
 
 response = s.post(login_url, cookies=cookiejar, data=data, headers= headers, verify=False)
 
-print(parser(response))
+response_dict = (parser(response))
+
+print_this(response_dict)
