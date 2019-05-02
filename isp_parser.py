@@ -7,7 +7,7 @@ def tag_to_string(tag_item): # converts bs4.element.tag datatype to string datat
   
   return string
 
-def parser(response): # parses the html response; passes data to formatter function for formatting
+def page_parser(response): # parses the html response; passes data to formatter function for formatting
     soup = bs(response.content, features="html.parser")
 
 
