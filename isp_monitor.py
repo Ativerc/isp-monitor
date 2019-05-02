@@ -1,16 +1,16 @@
-import requests, argparse
+import requests, argparse, getpass
 from ignore.credentials import credentials_dict
 from ignore.defaults import headers
 from isp_parser import page_parser
 from isp_printer import print_this
 
 def passwordFetcher():
-  password = input("Enter your password: ")
-  password_confirm = input("Confirm password: ")
+  password = getpass.getpass(prompt="Enter your password: ")
+  password_confirm = getpass.getpass(prompt="Confirm password: ")
   while password != password_confirm:
     print("Passwords didn't match! Please re-enter your passwords again!")
-    password = input("Enter your password: ")
-    password_confirm = input("Confirm password: ")
+    password = getpass.getpass(prompt="Enter your password: ")
+    password_confirm = getpass.getpass(prompt="Confirm password: ")
   else:
     print("Password confirmed!")
   return password
