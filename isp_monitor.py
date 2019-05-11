@@ -65,9 +65,10 @@ response_dict = (page_parser(response))
 # can't find datetime module's docs at the moment. 
 # Let's implement some of my own stuff
 # heck I hope response_dict has a key named "Last Date"
-date = response_dict["Last Date"]
+date = response_dict["Plan Expiry Date"]
 month = date.split("-")[1]
 month_name = dtproxy_months[month]
+print(date.split("-")[0] + " " + month_name + " " + date.split("-")[2])
 
 if args.verbose == True:
   print_verbose(response_dict)
