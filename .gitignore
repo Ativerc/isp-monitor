@@ -3,3 +3,6 @@ ignore/
 __pycache__/
 
 .vscode/
+.envrc
+
+telegram-bot.py
