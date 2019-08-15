@@ -54,13 +54,15 @@ data = {
   'LoginForm[password]': password,
   'yt0': 'Log In'
 }
-response = s.post(login_url, cookies=cookiejar, data=data, headers= headers, verify=False)
 
-response_dict = (page_parser(response))
+def responser():
+  response = s.post(login_url, cookies=cookiejar, data=data, headers= headers, verify=False)
+  response_dict = (page_parser(response))
+  return response_dict
 
 if __name__ == '__main__':
 
   if args.verbose == True:
-    print_verbose(response_dict)
+    print_verbose(responser())
   else:
-    print_this(response_dict)
+    print_this(responser())
