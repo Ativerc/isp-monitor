@@ -1,7 +1,6 @@
 #!/bin/python
 
-import requests, argparse, getpass
-from ignore.credentials import stored_creds
+import requests, argparse, getpass, os
 from ignore.defaults import headers
 from isp_parser import page_parser
 from isp_printer import print_this, print_verbose
@@ -38,8 +37,8 @@ if args.instant == True:
   password = instant_creds['password']
   args.verbose = True  # If Instant option is chosen, then output mode is immediately set to verbose
 else:
-  username = stored_creds['username'] 
-  password = stored_creds['password']
+  username = os.environ['USERNAME'] 
+  password = os.environ['PASSWORD']
 
 
 
@@ -47,7 +46,7 @@ else:
 def responser():
   #Start Session with ISP's Login Page
   s = requests.session()
-  login_url = stored_creds['login_url']
+  login_url = os.environ['URL']
   #initial_response = s.get(login_url, verify=False)
   cookiejar = s.cookies
   data = {
