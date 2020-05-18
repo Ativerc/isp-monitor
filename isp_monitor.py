@@ -30,13 +30,14 @@ parser.add_argument('-i', '--instant', action='store_true')
 parser.add_argument('-v', '--verbose', action='store_true')
 args = parser.parse_args()
 
-#ifelse for credentials handling in "instant" vs "non-instant" mode of operation
-if args.instant == True:
+#ifelse for credentials handling in "instant" vs "normal" mode of operation
+
+if args.instant == True: # If "instant" option is chosen; instant_creds_fetcher() is called; output mode is set to verbose
   instant_creds = instant_creds_fetcher()
   username = instant_creds['username']
   password = instant_creds['password']
-  args.verbose = True  # If Instant option is chosen, then output mode is immediately set to verbose
-else:
+  args.verbose = True  
+else: # for "normal" mode, the credentials are fetched from the environment variables
   username = os.environ['USERNAME'] 
   password = os.environ['PASSWORD']
 
