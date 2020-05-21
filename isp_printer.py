@@ -16,7 +16,6 @@ from datetime import datetime
 # GREEN Status:
     # Active with Pending Amount == 0
 def print_this(response_dict):
-    
     if response_dict['Status'] == 'Disable' or response_dict['Status'] == 'InActive' or int(response_dict['Pending Amount']) > 0: 
         # For RED States:
             # (Active but Pending Amount > 0) or Disable
@@ -35,7 +34,6 @@ def print_this(response_dict):
         print(Fore.WHITE + Style.BRIGHT + 'Plan Expired On: ' + Fore.GREEN + Style.BRIGHT + month_name(response_dict["Plan Expiry Date"]) + Style.RESET_ALL)
 
 def print_verbose(response_dict):
-    
     if response_dict['Status'] != 'Active' or int(response_dict['Pending Amount']) > 0: #When Status != Active or Pending Amount > 0
         print_this(response_dict)
         print("\n:-------Details-------:\n")
