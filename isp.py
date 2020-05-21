@@ -59,9 +59,12 @@ def responser():
   response_dict = (page_parser(response))
   return response_dict
 
+
 if __name__ == '__main__':
 
   if args.verbose == True:
     print_verbose(responser())
   else:
     print_this(responser())
+
+  print(__name__)

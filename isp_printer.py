@@ -1,5 +1,5 @@
 from colorama import Fore, Back, Style
-from datetime_proxy import months as dtproxy_months
+from datetime import datetime
 
 # When Status == Active or Status == Disabled 
     # Values = 'Status', 'Name', 'Plan Name', 'Plan Renewal Date', 'Plan Expiry Date', 'Pending Amount',
@@ -47,7 +47,7 @@ def print_verbose(response_dict):
         for key,value in response_dict.items():
             print(Fore.WHITE + Style.BRIGHT + key + Style.RESET_ALL + ": " + value) 
 
-def month_name(last_date):
-    month = last_date.split("-")[1]
-    month_name = dtproxy_months[month]
-    return (last_date.split("-")[0] + " " + month_name + " " + last_date.split("-")[2])
+
+def month_name(datestring):
+    date = datetime.strptime(datestring, "%d-%m-%Y")
+    return datetime.strftime(date, "%d-%b-%Y")
