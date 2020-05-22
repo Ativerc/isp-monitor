@@ -1,9 +1,14 @@
 # ISP Monitor
-A tool to monitor my internet connection's data usage, payment and account status.
+A tool to monitor my internet connection's data usage, payment and account status. 
+Will add support soon for other ISPs.
 
 
 ## TODOs
-* [ ] Add support for other ISPs.
+* [ ] Add groundwork for supporting other ISPs:
+* Add support for ISPs:
+  * [ ] Airtel
+  * [ ] ACT Fibernet
+  * [ ] BSNL
 * [ ] Post a relevant message as per status and payment date.
 * [x] Remove verbose by default from `isp_printer.py`
 * [ ] Take care/Handle the SSL Error warnings for Jetspot. (Incomplete server certificate chain)
@@ -12,4 +17,4 @@ A tool to monitor my internet connection's data usage, payment and account statu
   * [x]  ~~instant mode(checkstatus for runtime-entered username, password)~~, 
   * [x]  ~~verbose mode(Print what was entirely scrapped from the ISP's website)~~
 * [x] ~~Use datetime module instead of datetimeproxy.py~~
-* [ ] Remove last "" at the end in `isp_parser.py`'s  `non_empty_data_list.append("") `. Will get back to this later. 
+* [ ] Remove last "" at the end in `isp_parser.py`'s  `non_empty_data_list.append("") `. (Jetspot)
