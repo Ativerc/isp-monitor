@@ -8,13 +8,13 @@ from isp_printer import print_this, print_verbose
 
 def passwordFetcher():
   password = getpass.getpass(prompt="Enter your password: ")
-  # password_confirm = getpass.getpass(prompt="Confirm password: ")
-  # while password != password_confirm:
-  #   print("Passwords didn't match! Please re-enter your passwords again!")
-  #   password = getpass.getpass(prompt="Enter your password: ")
-  #   password_confirm = getpass.getpass(prompt="Confirm password: ")
-  # else:
-  #   print("Password confirmed!")
+  password_confirm = getpass.getpass(prompt="Confirm password: ")
+  while password != password_confirm:
+    print("Passwords didn't match! Please re-enter your passwords again!")
+    password = getpass.getpass(prompt="Enter your password: ")
+    password_confirm = getpass.getpass(prompt="Confirm password: ")
+  else:
+    print("Password confirmed!")
   return password
 
 
@@ -66,5 +66,3 @@ if __name__ == '__main__':
     print_verbose(responser())
   else:
     print_this(responser())
-
-  print(__name__)
