@@ -4,7 +4,7 @@ Will add support soon for other ISPs.
 
 
 ## TODOs
-* [ ] Add groundwork for supporting other ISPs:
+* [x] Add groundwork for supporting other ISPs:
 * Add support for ISPs:
   * [ ] Airtel
   * [ ] ACT Fibernet
