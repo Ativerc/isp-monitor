@@ -1,6 +1,5 @@
-import requests, os
+import requests, os, getpass
 from bs4 import BeautifulSoup as bs
-import getpass
 
 
 def passwordFetcher():
