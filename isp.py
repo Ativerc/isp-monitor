@@ -2,7 +2,7 @@
 
 import requests, argparse, getpass, os
 from isp_printer import print_this, print_verbose
-from isps.jetspot.jetspot import jetspot_main
+from isps.jetspot.jetspot import jetspot_main, responser
 
 isp_options = {1: "Jetspot"}
 
@@ -30,6 +30,11 @@ if args.interactive == True: # If "interactive" option is chosen; instant_creds_
   args.verbose = True  
 else: # for "normal" mode, the credentials are fetched from the environment variables
   selected_isp = os.environ['ISP']
+
+def response_dict_return(selected_isp, username, password): # For use by other CLI tools
+  if selected_isp == 1 or "JETSPOT":
+    isp_dict = responser(username, password)
+  return isp_dict
 
 if __name__ == '__main__':
   if (selected_isp == 1 or "JETSPOT"):
