@@ -14,40 +14,66 @@ def passwordFetcher():
         return password
 # too many confirmations. Need to rewrite the whole input mechanism.
 
-
 def instant_creds_fetcher(): # Should change its name probably? :TODO:
     username = input("Enter your Username/UserID: ")
     password = passwordFetcher()
     instant_fetched_creds = {'username': username, 'password': password}
     return instant_fetched_creds 
 
-def page_parser(response): # parses the html response; passes data to formatter function for formatting
+
+
+# PARSING PART
+
+def page_parser(response): 
+    """
+    parses the html response
+    passes data (list of td bs4.element.tag) to formatter function for formatting
+    """
     soup = bs(response.content, features="html.parser")
     table_datas = soup.select('td')
     return formatter(table_datas)
 
 
-def tag_to_string(tag_item): # converts bs4.element.tag datatype to string datatype
+def tag_to_string(tag_item):
+    """
+    converts bs4.element.tag datatype to string datatype
+    """
     string = tag_item.get_text()
     return string
 
 
 def formatter(table_data):
-    data_list = list(map(tag_to_string, table_data)) # maps each list item to tag_to_string function;  # converts the returned data to list
+    """
+    maps each list item to tag_to_string function
+    converts the returned data to list
+    """
+    data_list = list(map(tag_to_string, table_data)) 
+    print(data_list) #test
+    for i in data_list:
+        print(i)
     counter = 0
     while "" in data_list and counter<6: #removes empty "" from data_list 
         data_list.remove("")
         counter +=1
+    print("Data List 2") #test
+    print(data_list)
     non_empty_data_list = list(map(str.strip, data_list))
-    non_empty_data_list.append("") 
+    print("nedl 1") #test
+    for i in non_empty_data_list: 
+        print(i)
+    # non_empty_data_list.append("") 
+    print("nedl 2") #test
+    for i in non_empty_data_list:
+        print(i)
     data_dict = {}
-    for i in range(0, len(non_empty_data_list), 2):
+    for i in range(0, len(non_empty_data_list)-2, 2):
         data_dict[non_empty_data_list[i]] = non_empty_data_list[i+1]
     return data_dict
 
+# REQUEST/RESPONSE PART
 
 def responser(username, password):
-    #Start Session with ISP's Login Page
+    # Start Session with ISP's Login Page
     session = requests.session()
     login_url = 'https://login.jetspot.in/synnefoclient/'
     #initial_response = s.get(login_url, verify=False)
@@ -59,7 +85,7 @@ def responser(username, password):
         }
     print("Fetching Data!")
     response = session.post(login_url, cookies=cookiejar, data=data, verify=False)  #ssl_certificate verification fails for some reason; hence set verify=False
-    response_dict = (page_parser(response))
+    response_dict = (page_parser(response)) # Calls Page Parser here to parse the page
     return response_dict
 
 
