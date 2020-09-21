@@ -133,6 +133,9 @@ def jetspot_main(verbosity=False, interactive=False):
         username = fetched_creds['username']
         password = fetched_creds['password']
     data = responser(username, password)
-    for key, value in data.items(): # delete post testing :TODO:
-        print(f"{key}: {value}")    # delete post testing :TODO:
-    return data
+    # for key, value in data.items(): # delete post testing :TODO:
+    #     print(f"{key}: {value}")    # delete post testing :TODO:
+    if args.verbose == True:
+        print_verbose(responser())
+    else:
+        print_this(responser())

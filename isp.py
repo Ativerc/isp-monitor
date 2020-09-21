@@ -39,7 +39,3 @@ def response_dict_return(selected_isp, username, password): # For use by other C
 if __name__ == '__main__':
   if (selected_isp == 1 or "JETSPOT"):
       jetspot_main(args.verbose, args.interactive)
-  # if args.verbose == True:
-  #   print_verbose(responser())
-  # else:
-  #   print_this(responser())
