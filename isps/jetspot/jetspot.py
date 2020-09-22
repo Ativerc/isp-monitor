@@ -1,6 +1,6 @@
 import requests, os, getpass, sys
 from bs4 import BeautifulSoup as bs
-
+from isps.jetspot.ispprinter import print_this, print_verbose
 
 def passwordFetcher():
     password = getpass.getpass(prompt="Enter your password: ")
@@ -59,10 +59,10 @@ def key_checker(td_string_list):
             failed_keys.append(i)
             # Raise here or later?
     if len(failed_keys) != 0:
-        print("KeyNotFoundError by key_checker(). Keys not found are:", end="") # :TODO: Raise Error!
+        print("KeyNotFoundError by key_checker(). Keys not found are:") # :TODO: Raise Error!
         for i in range(len(failed_keys)):
             print(f"\"{usual_key_values[i]}\" ", end="")
-        print("Exiting!")
+        print("\nExiting!")
         sys.exit()
     return td_string_list
 
@@ -132,10 +132,10 @@ def jetspot_main(verbosity=False, interactive=False):
         fetched_creds = instant_creds_fetcher()
         username = fetched_creds['username']
         password = fetched_creds['password']
-    data = responser(username, password)
+    # data = responser(username, password)
     # for key, value in data.items(): # delete post testing :TODO:
     #     print(f"{key}: {value}")    # delete post testing :TODO:
-    if args.verbose == True:
-        print_verbose(responser())
+    if verbosity == True:
+        print_verbose(responser(username, password))
     else:
-        print_this(responser())
+        print_this(responser(username, password))

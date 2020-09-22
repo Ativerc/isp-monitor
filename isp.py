@@ -1,7 +1,6 @@
 #!/bin/python
 
 import requests, argparse, getpass, os
-from isp_printer import print_this, print_verbose
 from isps.jetspot.jetspot import jetspot_main, responser
 
 isp_options = {1: "Jetspot"}
