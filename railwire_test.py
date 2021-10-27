@@ -46,11 +46,11 @@ cookies = {
 }
 
 data = {
-  'railwire_test_name': railwire_cookie_name,
-  'username': railwire_username,
-  'password': railwire_password,
-  'code': captcha,
-  'baseurl': ''
+    'railwire_test_name': railwire_cookie_name,
+    'username': railwire_username,
+    'password': railwire_password,
+    'code': captcha,
+    'baseurl': ''
 }
 
 response = requests.post(railwire_url, headers=headers, cookies=cookies, data=data) # /
@@ -58,5 +58,8 @@ response = requests.post(railwire_url, headers=headers, cookies=cookies, data=da
 if response.status_code == requests.codes.ok:
     content = response.content
     response_soup = bsoup(content, "html.parser")
-    print(response.status_code)
-    print(response_soup.prettify())
+
+    # print(response.status_code)
+    # item = response_soup.select("#span_data_used")[0].get_text()
+    # print(item)
+    # print(response_soup.prettify())
