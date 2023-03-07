@@ -11,6 +11,9 @@ scraping_data:
         visible_value:
         value_type: string
         selector: "#user_widget > div:nth-child(1) > div.kt-widget__wrapper > div > a"
+      property:
+        private: False
+        core-data: True
     Username:
       tag: 
         visible_tag: "Username" # Create
@@ -21,6 +24,9 @@ scraping_data:
         value_type: string
         visible_value: ""
         selector: "#user_widget > div:nth-child(2) > div > div:nth-child(1) > div > div:nth-child(1) > a"
+      property:
+        private: False
+        core-data: True
     Registration_Date:
       tag: 
         visible_tag: "Registration Date" # Create
@@ -31,6 +37,9 @@ scraping_data:
         value_type: datestring
         visible_value: ""
         selector: "#user_widget > div:nth-child(2) > div > div:nth-child(1) > div > div:nth-child(2) > a"
+      property:
+        private: False
+        core-data: False
     Email_ID:
       tag: 
         visible_tag: "Email ID" # Create
@@ -41,6 +50,9 @@ scraping_data:
         value_type: string
         visible_value: ""
         selector: "#user_widget > div:nth-child(2) > div > div:nth-child(1) > div > div:nth-child(3) > a"
+      property:
+        private: True
+        core-data: False
     Plan_Fee:
       tag: 
         visible_tag: "Plan Fee" # Create
@@ -51,16 +63,25 @@ scraping_data:
         value_type: floatstring
         visible_value: ""
         selector: "#user_widget > div:nth-child(2) > div > div:nth-child(1) > div > div:nth-child(4) > a"
+      property:
+        private: False
+        core-data: True
     Plan_Name:
       tag: 
         visible_tag: "Plan Name" # Create
         invisible_tag_value: "" #Actual Stored Value for Username. Create TruthFiles from this not the data.
         selector: "#user_widget > div:nth-child(2) > div > div:nth-child(1) > div > div:nth-child(5)"
         tag_value_type: string #type of the value of Username
+      property:
+        private: False
+        core-data: True
       value:
         value_type: string
         visible_value: ""
         selector: "#user_widget > div:nth-child(2) > div > div:nth-child(1) > div > div:nth-child(5) > a"
+      property:
+        private: False
+        core-data: True
     Subscription_Status:
       tag: 
         visible_tag: "Subscription Status" # Create
@@ -71,6 +92,9 @@ scraping_data:
         value_type: string
         visible_value: ""
         selector: "#user_widget > div:nth-child(2) > div > div:nth-child(1) > div > div:nth-child(6) > a"
+      property:
+        private: False
+        core-data: True
     Subscriberid:
       tag: 
         visible_tag: "Subscriberid" # Create
@@ -81,6 +105,9 @@ scraping_data:
         value_type: intstring
         visible_value: ""
         selector: "#user_widget > div:nth-child(2) > div > div:nth-child(2) > div > div:nth-child(1) > a"
+      property:
+        private: False
+        core-data: True
     Associated_LCO:
       tag: 
         visible_tag: "Associated LCO" # Create
@@ -91,6 +118,9 @@ scraping_data:
         value_type: string
         visible_value: ""
         selector: "#user_widget > div:nth-child(2) > div > div:nth-child(2) > div > div:nth-child(2) > a"
+      property:
+        private: False
+        core-data: True
     Mobile_No:
       tag: 
         visible_tag: "Mobile No" # Create
@@ -101,6 +131,9 @@ scraping_data:
         value_type: intstring
         visible_value: ""
         selector: "#user_widget > div:nth-child(2) > div > div:nth-child(2) > div > div:nth-child(3) > a"
+      property:
+        private: True
+        core-data: False
     Expiry:
       tag: 
         visible_tag: "Expiry" # Create
@@ -111,6 +144,9 @@ scraping_data:
         value_type: datestring
         visible_value: ""
         selector: "#user_widget > div:nth-child(2) > div > div:nth-child(2) > div > div:nth-child(4) > a"
+      property:
+        private: False
+        core-data: True
     Last_Renewal:
       tag: 
         visible_tag: "Last Renewal" # Create
@@ -121,6 +157,9 @@ scraping_data:
         value_type: datestring
         visible_value: ""
         selector: "#user_widget > div:nth-child(2) > div > div:nth-child(2) > div > div:nth-child(5) > a"
+      property:
+        private: False
+        core-data: True
     Data_Used:
       tag: 
         visible_tag: "Data Used" # Create
@@ -131,12 +170,19 @@ scraping_data:
         value_type: floatstring
         visible_value: ""
         selector: "#span_data_used"
+      property:
+        private: False
+        core-data: True
     Data_Used_Unit:
-      tag: none
+      tag: 
+        selector: "#kt_wrapper > div.kt-container.kt-container--fluid.kt-grid__item.kt-grid__item--fluid > div > div:nth-child(2) > div > div.kt-portlet__foot.p0 > div > div:nth-child(1) > div > div > a"
       value:
         value_type: string
         visible_value: ""
         selector: "#kt_wrapper > div.kt-container.kt-container--fluid.kt-grid__item.kt-grid__item--fluid > div > div:nth-child(2) > div > div.kt-portlet__foot.p0 > div > div:nth-child(1) > div > div > a"
+      property:
+        private: False
+        core-data: True
     Total_Data:
       tag: 
         visible_tag: "Total Data" # Create
@@ -147,6 +193,9 @@ scraping_data:
         value_type: floatstring
         visible_value: ""
         selector: "#span_total_data"
+      property:
+        private: False
+        core-data: True
 isp_info:
   country: IN
   url: user-provided
