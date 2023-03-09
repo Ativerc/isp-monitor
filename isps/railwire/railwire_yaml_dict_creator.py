@@ -1,6 +1,9 @@
 from yaml import load
 from yaml.loader import Loader
-from railwire_test import response_soup
+from railwire import perform_login
+
+response_soup = perform_login()
+
 
 def get_text(selector):
     text = from_soup(selector)
