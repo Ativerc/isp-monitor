@@ -1,21 +1,8 @@
 # TODO
 
-## Core
-* Scraper
-  - [ ] Scraper
-  - [ ] Crawler + Scraper
-  - [ ] Dynamic Website Handler   
-- [ ] Logging In
-- [ ] Data Processor
-- [ ] Supported ISPs List
-
 
 ## ISP
-- [ ] ISP Constants File:
-    * Scraping Type [Scrape, Crawl-Scrape, Dynamic]
-    * ISP Login Type
-    * Login URL
-    * Base URL
+
 - [ ] Data Metadata yml File with: 
     * Each data in these profile info pages of ISPs are usually in the form of `Tag: Value`. For example: `Email: youremailid@email.com`. Both the tag and value are important.
     * So the yml file to target and scrape the data:
@@ -36,6 +23,3 @@
     ```
 
 ## API
-* Which ISP are supported?
-* Get data for isp-credentials combo. _How do I secure this though?_
-* 
