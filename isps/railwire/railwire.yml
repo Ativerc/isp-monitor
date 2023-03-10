@@ -1,8 +1,8 @@
 ---
 isp_name: railwire
-scraping_data: 
+scraped_data: 
     Name: 
-      tag: # Added a selector here since I realised bs4's 
+      tag: # Added a selector here since I realised bs4's
       # get_text() gets the text from all elements in a 
       # tag, even nested tag's text.
       # So just the tag's selector gets the value

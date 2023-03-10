@@ -1,4 +1,4 @@
-from railwire_yaml_dict_creator import data_dict
+from railwire_data_pipeline import FINAL_DICT
 
 from yaml import load
 from yaml.loader import Loader
@@ -6,9 +6,10 @@ from yaml.loader import Loader
 with open("railwire.yml", 'r', encoding="utf-8") as stream:
     dictionary = load(stream, Loader=Loader)
 
+data_dict = FINAL_DICT
 
 data_dict_keys = list(data_dict.keys())
-yaml_keys = list(dictionary["scraping_data"].keys())
+yaml_keys = list(dictionary["scraped_data"].keys())
 
 keys_to_keys_dict = {}
 
@@ -21,9 +22,9 @@ for y_key in yaml_keys:
 core_data_dict = {}
 private_data_dict = {}
 for y_key in yaml_keys:
-    if dictionary["scraping_data"][y_key]["property"]["core-data"] == True:
+    if dictionary["scraped_data"][y_key]["property"]["core-data"] == True:
         core_data_dict[y_key] = data_dict[keys_to_keys_dict[y_key]]
-    elif dictionary["scraping_data"][y_key]["property"]["private"] == True:
+    elif dictionary["scraped_data"][y_key]["property"]["private"] == True:
         private_data_dict[y_key] = data_dict[keys_to_keys_dict[y_key]]
 
 def dict_print(diction):
