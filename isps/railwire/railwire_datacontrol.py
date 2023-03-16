@@ -1,4 +1,4 @@
-from railwire_data_pipeline import FINAL_DICT
+from railwire_data_pipeline import DATA_DICT
 
 from yaml import load
 from yaml.loader import Loader
@@ -6,7 +6,7 @@ from yaml.loader import Loader
 with open("railwire.yml", 'r', encoding="utf-8") as stream:
     dictionary = load(stream, Loader=Loader)
 
-data_dict = FINAL_DICT
+data_dict = DATA_DICT
 
 data_dict_keys = list(data_dict.keys())
 yaml_keys = list(dictionary["scraped_data"].keys())

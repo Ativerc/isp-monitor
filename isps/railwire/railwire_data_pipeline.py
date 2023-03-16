@@ -84,8 +84,8 @@ def find_data_usage_unit(dicti):
     dicti['Data_Used_Unit'] = unit_tag_value.split("/")[0][-3:-1]
     return dicti
 
-FINAL_DICT = find_data_usage_unit(data_dict)
+DATA_DICT = find_data_usage_unit(data_dict)
 
 if __name__ == "__main__":
-    for key, value in FINAL_DICT.items():
+    for key, value in DATA_DICT.items():
         print(f"{key}: {value}")
