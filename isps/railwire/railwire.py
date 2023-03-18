@@ -7,7 +7,7 @@ SAVED_USERNAME = os.environ['rw_username']
 SAVED_PASSWORD = os.environ['rw_password']
 SAVED_URL = os.environ['rw_url']
 
-session = requests.Session()
+
 
 def perform_login(username=SAVED_USERNAME, password=SAVED_PASSWORD, railwire_url=SAVED_URL):
     """Attempts to make a GET request to Railwire and on success,
@@ -22,6 +22,7 @@ def perform_login(username=SAVED_USERNAME, password=SAVED_PASSWORD, railwire_url
         BeautifulSoupObject: A BS object of the response from 
         server post login.
     """
+    session = requests.Session()
     request = session.get(railwire_url)
     soup = bsoup(request.content, "html.parser")
     ci_session_cookie = request.cookies['ci_session']

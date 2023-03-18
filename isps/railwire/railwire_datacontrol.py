@@ -6,50 +6,57 @@ from yaml.loader import Loader
 with open("railwire.yml", 'r', encoding="utf-8") as stream:
     yml_dict = load(stream, Loader=Loader)
 
-data_dict = pipeline_main()
-
-data_dict_keys = list(data_dict.keys())
-yml_keys = list(yml_dict["scraped_data"].keys())
-
-yml_to_data_dict = {}
-
-keycount = 0
-for key in yml_keys:
-    yml_to_data_dict[key] = data_dict_keys[keycount]
-    keycount += 1
 
 
-def core_data():
+
+def core_data(yml_keys, data_dict, yml_to_data_dict):
     core_data_dict = {}
     for key in yml_keys:
         if yml_dict["scraped_data"][key]["property"]["core-data"] == True:
             core_data_dict[key] = data_dict[yml_to_data_dict[key]]
     return core_data_dict
 
-def private_data():
+def private_data(yml_keys, data_dict, yml_to_data_dict):
     private_data_dict = {}
     for key in yml_keys:
         if yml_dict["scraped_data"][key]["property"]["private"] == True:
             private_data_dict[key] = data_dict[yml_to_data_dict[key]]
+    return private_data_dict
 
 
-def return_dict(oftype):
+def return_dict(oftype, dictionary=None):
     """_summary_
 
     Args:
-        oftype (string): "core-data" / "private" / "all"
+        oftype (string): "core" / "private" / "all"
 
     Returns:
         _type_: _description_
     """
-    if oftype == "core-data":
-        return core_data()
+
+    if dictionary is None:
+        data_dict = pipeline_main()
+    else:
+        data_dict = dictionary
+
+    data_dict_keys = list(data_dict.keys())
+    yml_keys = list(yml_dict["scraped_data"].keys())
+
+    yml_to_data_dict = {}
+
+    keycount = 0
+    for key in yml_keys:
+        yml_to_data_dict[key] = data_dict_keys[keycount]
+        keycount += 1
+
+    if oftype == "core":
+        return core_data(yml_keys, data_dict, yml_to_data_dict)
     elif oftype == "private":
-        return private_data()
+        return private_data(yml_keys, data_dict, yml_to_data_dict)
     elif oftype == "all":
         all_data_dict = {}
-        all_data_dict.update(core_data())
-        all_data_dict.update(private_data())
+        all_data_dict.update(core_data(yml_keys, data_dict, yml_to_data_dict))
+        all_data_dict.update(private_data(yml_keys, data_dict, yml_to_data_dict))
         return all_data_dict
 
 
@@ -60,5 +67,5 @@ def dict_print(diction):
 
 
 if __name__ == '__main__':
-    print("Printing core-data dict....\n\n")
-    dict_print(core_data())
+    print("Printing 'core' dict....\n\n")
+    print(return_dict("core"))

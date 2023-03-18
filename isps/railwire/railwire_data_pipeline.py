@@ -44,7 +44,7 @@ def get_text_from_soup(soup, selector):
 data_dict = {}
 
 with open("railwire.yml", 'r', encoding="utf-8") as stream:
-        dictionary = load(stream, Loader=Loader) 
+    dictionary = load(stream, Loader=Loader) 
 
 
 
