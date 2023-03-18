@@ -1,35 +1,71 @@
-from railwire_yaml_dict_creator import data_dict
+from railwire_data_pipeline import main as pipeline_main
 
 from yaml import load
 from yaml.loader import Loader
 
 with open("railwire.yml", 'r', encoding="utf-8") as stream:
-    dictionary = load(stream, Loader=Loader)
+    yml_dict = load(stream, Loader=Loader)
 
 
-data_dict_keys = list(data_dict.keys())
-yaml_keys = list(dictionary["scraping_data"].keys())
-
-keys_to_keys_dict = {}
-
-keycount = 0
-for y_key in yaml_keys:
-    keys_to_keys_dict[y_key] = data_dict_keys[keycount]
-    keycount += 1
 
 
-core_data_dict = {}
-private_data_dict = {}
-for y_key in yaml_keys:
-    if dictionary["scraping_data"][y_key]["property"]["core-data"] == True:
-        core_data_dict[y_key] = data_dict[keys_to_keys_dict[y_key]]
-    elif dictionary["scraping_data"][y_key]["property"]["private"] == True:
-        private_data_dict[y_key] = data_dict[keys_to_keys_dict[y_key]]
+def core_data(yml_keys, data_dict, yml_to_data_dict):
+    core_data_dict = {}
+    for key in yml_keys:
+        if yml_dict["scraped_data"][key]["property"]["core-data"] == True:
+            core_data_dict[key] = data_dict[yml_to_data_dict[key]]
+    return core_data_dict
+
+def private_data(yml_keys, data_dict, yml_to_data_dict):
+    private_data_dict = {}
+    for key in yml_keys:
+        if yml_dict["scraped_data"][key]["property"]["private"] == True:
+            private_data_dict[key] = data_dict[yml_to_data_dict[key]]
+    return private_data_dict
+
+
+def return_dict(oftype, dictionary=None):
+    """_summary_
+
+    Args:
+        oftype (string): "core" / "private" / "all"
+
+    Returns:
+        _type_: _description_
+    """
+
+    if dictionary is None:
+        data_dict = pipeline_main()
+    else:
+        data_dict = dictionary
+
+    data_dict_keys = list(data_dict.keys())
+    yml_keys = list(yml_dict["scraped_data"].keys())
+
+    yml_to_data_dict = {}
+
+    keycount = 0
+    for key in yml_keys:
+        yml_to_data_dict[key] = data_dict_keys[keycount]
+        keycount += 1
+
+    if oftype == "core":
+        return core_data(yml_keys, data_dict, yml_to_data_dict)
+    elif oftype == "private":
+        return private_data(yml_keys, data_dict, yml_to_data_dict)
+    elif oftype == "all":
+        all_data_dict = {}
+        all_data_dict.update(core_data(yml_keys, data_dict, yml_to_data_dict))
+        all_data_dict.update(private_data(yml_keys, data_dict, yml_to_data_dict))
+        return all_data_dict
+
+
 
 def dict_print(diction):
     for key, value in diction.items():
         print(f"{key}: {value}")
 
 
-# dict_print(private_data_dict)
-dict_print(core_data_dict)
+if __name__ == '__main__':
+    print("Printing 'core' dict....\n\n")
+    print(return_dict("core"))
