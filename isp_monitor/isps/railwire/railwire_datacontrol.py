@@ -1,9 +1,9 @@
-from railwire_data_pipeline import main as pipeline_main
+from .railwire_data_pipeline import main as pipeline_main
 
 from yaml import load
 from yaml.loader import Loader
 
-with open("railwire.yml", 'r', encoding="utf-8") as stream:
+with open("./isp_monitor/isps/railwire/railwire.yml", 'r', encoding="utf-8") as stream:
     yml_dict = load(stream, Loader=Loader)
 
 
@@ -24,7 +24,7 @@ def private_data(yml_keys, data_dict, yml_to_data_dict):
     return private_data_dict
 
 
-def return_dict(oftype, dictionary=None):
+def return_dict(dict_type, dictionary=None):
     """_summary_
 
     Args:
@@ -49,11 +49,11 @@ def return_dict(oftype, dictionary=None):
         yml_to_data_dict[key] = data_dict_keys[keycount]
         keycount += 1
 
-    if oftype == "core":
+    if dict_type == "core":
         return core_data(yml_keys, data_dict, yml_to_data_dict)
-    elif oftype == "private":
+    elif dict_type == "private":
         return private_data(yml_keys, data_dict, yml_to_data_dict)
-    elif oftype == "all":
+    elif dict_type == "all":
         all_data_dict = {}
         all_data_dict.update(core_data(yml_keys, data_dict, yml_to_data_dict))
         all_data_dict.update(private_data(yml_keys, data_dict, yml_to_data_dict))

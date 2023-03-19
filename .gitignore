@@ -9,3 +9,5 @@ telegram-bot.py
 
 *.pyc
 *.code-workspace
+
+directory-tree-for-bug-fix.txt
