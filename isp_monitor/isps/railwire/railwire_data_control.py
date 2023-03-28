@@ -1,9 +1,9 @@
-from .railwire_data_pipeline import main as pipeline_main
+from isp_monitor.isps.railwire.railwire_data_pipeline import main as pipeline_main
 
 from yaml import load
 from yaml.loader import Loader
 
-with open("./isp_monitor/isps/railwire/railwire.yml", 'r', encoding="utf-8") as stream:
+with open("isp_monitor/isps/railwire/railwire.yml", 'r', encoding="utf-8") as stream:
     yml_dict = load(stream, Loader=Loader)
 
 
