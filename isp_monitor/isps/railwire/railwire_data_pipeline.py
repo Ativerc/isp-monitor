@@ -1,6 +1,8 @@
+import os
+
 from yaml import load
 from yaml.loader import Loader
-from railwire import perform_login
+from isp_monitor.isps.railwire.railwire import perform_login
 
 
 def remove_xa0(text):
@@ -43,7 +45,8 @@ def get_text_from_soup(soup, selector):
 
 data_dict = {}
 
-with open("isp_monitor/isps/railwire/railwire.yml", 'r', encoding="utf-8") as stream:
+FILEPATH = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'railwire.yml')
+with open(FILEPATH, 'r', encoding="utf-8") as stream:
     dictionary = load(stream, Loader=Loader) 
 
 

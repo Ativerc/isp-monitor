@@ -29,4 +29,5 @@ async def read_item(item_id: int):
 
 @app.post("/raw/")
 async def raw_info(item: Item):
-    raw_input(item.userid, item.password, item.url, item.output_type)
+    response = raw_input(item.userid, item.password, item.url, item.output_type)
+    return response
