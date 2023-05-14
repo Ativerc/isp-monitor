@@ -11,3 +11,5 @@ telegram-bot.py
 *.code-workspace
 
 directory-tree-for-bug-fix.txt
+.env_vars_list
+
