@@ -1,0 +1,2 @@
+class RailwireLoginError(Exception):
+    pass

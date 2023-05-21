@@ -3,6 +3,8 @@ import os
 import requests
 from bs4 import BeautifulSoup as bsoup
 
+from isp_monitor.isps.railwire.railwire_exceptions import RailwireLoginError
+
 SAVED_USERNAME = os.environ['rw_username']
 SAVED_PASSWORD = os.environ['rw_password']
 SAVED_URL = os.environ['rw_url']
@@ -55,4 +57,9 @@ def perform_login(username=SAVED_USERNAME, password=SAVED_PASSWORD, railwire_url
 
     login_response = session.post(railwire_url, headers=headers, cookies=cookiejar, data=data) 
     if login_response.status_code == 200:
-        return bsoup(login_response.content, "html.parser")
+        post_login_soup = bsoup(login_response.content, "html.parser")
+        post_login_soup_text = post_login_soup.get_text()
+        if "Invalid username/password" in post_login_soup_text:
+            raise RailwireLoginError("Login Error: Invalid Username/Password!")
+        else:
+            return post_login_soup
