@@ -4,6 +4,7 @@ __pycache__/
 
 .vscode/
 .envrc
+.env
 
 telegram-bot.py
 
