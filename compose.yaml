@@ -1,0 +1,15 @@
+services:
+  isp-monitor:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "8443:80"
+    volumes:
+      - .:/code
+    env_file:
+      - .env
+
+
+
+    
